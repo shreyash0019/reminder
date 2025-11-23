@@ -124,3 +124,8 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'gadhedaharshal@gmail.com'
 EMAIL_HOST_PASSWORD = 'Gaurav@123_098'
+
+
+
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / "staticfiles"
