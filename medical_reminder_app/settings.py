@@ -24,19 +24,11 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'rest_framework.authtoken',
-
     'accounts',
     'pharmacy',
     'reminders',
-    'notifications',
-
-    # ❌ Celery + Beat REMOVE (Render free tier unsupported)
-    # 'celery',
-    # 'django_celery_beat',
-
-    # ❌ background_task REMOVE (Render issues)
-    # 'background_task',
 ]
+
 
 
 MIDDLEWARE = [
