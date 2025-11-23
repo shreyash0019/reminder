@@ -1,0 +1,422 @@
+[
+    {
+        "model": "pharmacy.medicine",
+        "pk": 1,
+        "fields": {
+            "name": "Paracetamol",
+            "company": "Cipla",
+            "category": "Tablet",
+            "quantity": 40,
+            "expiry_date": "2026-10-01",
+            "price": 15.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 2,
+        "fields": {
+            "name": "Dolo 650",
+            "company": "Micro Labs",
+            "category": "Tablet",
+            "quantity": 25,
+            "expiry_date": "2025-07-15",
+            "price": 22.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 3,
+        "fields": {
+            "name": "Cough Syrup",
+            "company": "Himalaya",
+            "category": "Syrup",
+            "quantity": 18,
+            "expiry_date": "2025-12-15",
+            "price": 60.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 4,
+        "fields": {
+            "name": "Azithromycin",
+            "company": "Zydus",
+            "category": "Antibiotic",
+            "quantity": 32,
+            "expiry_date": "2026-02-20",
+            "price": 90.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 5,
+        "fields": {
+            "name": "Amoxicillin",
+            "company": "Alkem",
+            "category": "Antibiotic",
+            "quantity": 50,
+            "expiry_date": "2027-01-10",
+            "price": 75.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 6,
+        "fields": {
+            "name": "Ibuprofen",
+            "company": "Torrent",
+            "category": "Tablet",
+            "quantity": 20,
+            "expiry_date": "2026-03-12",
+            "price": 30.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 7,
+        "fields": {
+            "name": "Vitamin C",
+            "company": "Cipla",
+            "category": "Supplement",
+            "quantity": 60,
+            "expiry_date": "2027-05-22",
+            "price": 55.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 8,
+        "fields": {
+            "name": "ORS Solution",
+            "company": "Jeevan",
+            "category": "Oral Solution",
+            "quantity": 15,
+            "expiry_date": "2026-07-11",
+            "price": 20.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 9,
+        "fields": {
+            "name": "Metformin",
+            "company": "Sun Pharma",
+            "category": "Diabetic",
+            "quantity": 45,
+            "expiry_date": "2026-06-01",
+            "price": 40.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 10,
+        "fields": {
+            "name": "Glucon D",
+            "company": "Zydus",
+            "category": "Supplement",
+            "quantity": 12,
+            "expiry_date": "2026-04-18",
+            "price": 85.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 11,
+        "fields": {
+            "name": "Pantoprazole",
+            "company": "Intas",
+            "category": "Antacid",
+            "quantity": 33,
+            "expiry_date": "2026-08-09",
+            "price": 48.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 12,
+        "fields": {
+            "name": "Rabeprazole",
+            "company": "Cipla",
+            "category": "Antacid",
+            "quantity": 25,
+            "expiry_date": "2026-09-15",
+            "price": 42.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 13,
+        "fields": {
+            "name": "Cetirizine",
+            "company": "Dr. Reddy's",
+            "category": "Allergy",
+            "quantity": 28,
+            "expiry_date": "2026-12-05",
+            "price": 12.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 14,
+        "fields": {
+            "name": "Becosules",
+            "company": "Pfizer",
+            "category": "Vitamin",
+            "quantity": 52,
+            "expiry_date": "2027-02-16",
+            "price": 75.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 15,
+        "fields": {
+            "name": "Zincovit",
+            "company": "Mankind",
+            "category": "Vitamin",
+            "quantity": 35,
+            "expiry_date": "2027-03-21",
+            "price": 85.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 16,
+        "fields": {
+            "name": "Ranitidine",
+            "company": "Cipla",
+            "category": "Antacid",
+            "quantity": 18,
+            "expiry_date": "2025-11-11",
+            "price": 18.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 17,
+        "fields": {
+            "name": "Hydroxychloroquine",
+            "company": "IPCA",
+            "category": "Tablet",
+            "quantity": 10,
+            "expiry_date": "2026-10-01",
+            "price": 110.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 18,
+        "fields": {
+            "name": "Calcium D3",
+            "company": "Abbott",
+            "category": "Supplement",
+            "quantity": 22,
+            "expiry_date": "2027-09-30",
+            "price": 95.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 19,
+        "fields": {
+            "name": "ORS Powder",
+            "company": "Himalaya",
+            "category": "Powder",
+            "quantity": 14,
+            "expiry_date": "2026-03-18",
+            "price": 10.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 20,
+        "fields": {
+            "name": "Nimesulide",
+            "company": "Alkem",
+            "category": "Painkiller",
+            "quantity": 27,
+            "expiry_date": "2026-01-23",
+            "price": 55.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 21,
+        "fields": {
+            "name": "Diclofenac Gel",
+            "company": "Glenmark",
+            "category": "Pain Relief",
+            "quantity": 19,
+            "expiry_date": "2026-12-01",
+            "price": 90.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 22,
+        "fields": {
+            "name": "Amrutanjan Balm",
+            "company": "Amrutanjan",
+            "category": "Pain Relief",
+            "quantity": 13,
+            "expiry_date": "2027-01-13",
+            "price": 55.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 23,
+        "fields": {
+            "name": "Vicks Vaporub",
+            "company": "P&G",
+            "category": "Cold Relief",
+            "quantity": 16,
+            "expiry_date": "2026-02-28",
+            "price": 95.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 24,
+        "fields": {
+            "name": "Electral",
+            "company": "FDC",
+            "category": "Hydration",
+            "quantity": 34,
+            "expiry_date": "2026-05-09",
+            "price": 25.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 25,
+        "fields": {
+            "name": "Drotaverine",
+            "company": "Dr. Reddy's",
+            "category": "Antispasmodic",
+            "quantity": 21,
+            "expiry_date": "2026-08-17",
+            "price": 45.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 26,
+        "fields": {
+            "name": "Losartan",
+            "company": "Sun Pharma",
+            "category": "BP Control",
+            "quantity": 38,
+            "expiry_date": "2027-04-19",
+            "price": 70.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 27,
+        "fields": {
+            "name": "Amlodipine",
+            "company": "Cipla",
+            "category": "BP Control",
+            "quantity": 41,
+            "expiry_date": "2027-07-23",
+            "price": 68.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 28,
+        "fields": {
+            "name": "Erythromycin",
+            "company": "Alkem",
+            "category": "Antibiotic",
+            "quantity": 17,
+            "expiry_date": "2026-09-11",
+            "price": 98.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 29,
+        "fields": {
+            "name": "Levocetirizine",
+            "company": "Intas",
+            "category": "Allergy",
+            "quantity": 36,
+            "expiry_date": "2027-02-14",
+            "price": 28.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    },
+    {
+        "model": "pharmacy.medicine",
+        "pk": 30,
+        "fields": {
+            "name": "Montelukast",
+            "company": "Mankind",
+            "category": "Allergy",
+            "quantity": 26,
+            "expiry_date": "2027-06-07",
+            "price": 75.0,
+            "shop_name": "Main Pharmacy",
+            "location": "Hospital Store"
+        }
+    }
+]
