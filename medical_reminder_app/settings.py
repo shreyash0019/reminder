@@ -10,9 +10,9 @@ DEBUG = False
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
-    'reminder-xxxx.onrender.com',   # <-- apna actual Render domain daalna
+    'reminder-90sm.onrender.com',
+    '.onrender.com'
 ]
-
 
 INSTALLED_APPS = [
     'django.contrib.admin',
