@@ -6,7 +6,7 @@ def home(request):
     return JsonResponse({"message": "Medical Reminder API is running!"})
 
 urlpatterns = [
-    path('', home),   # 👈 add this line
+    path('', home),  # <-- Root URL FIXED
     path('admin/', admin.site.urls),
     path('api/accounts/', include('accounts.urls')),
     path('api/pharmacy/', include('pharmacy.urls')),
