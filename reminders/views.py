@@ -1,17 +1,19 @@
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.utils.timezone import now
+from django.views.decorators.csrf import csrf_exempt
+import json
+
 from .models import Reminder
 from pharmacy.models import Medicine
-
-# Firebase helpers
 from notifications.utils import send_notification
 from firebase_helpers import get_token_from_firestore
 
 
 # -------------------------------
-#  API: Get all reminders
+#  API: List all reminders
 # -------------------------------
+@csrf_exempt
 def reminder_list(request):
     reminders = Reminder.objects.all().order_by("reminder_time")
     data = [
@@ -28,21 +30,29 @@ def reminder_list(request):
         }
         for r in reminders
     ]
-    return JsonResponse({"reminders": data}, safe=False)
+    return JsonResponse({"reminders": data})
 
 
 # -------------------------------
-#  API: Create Reminder
+#  API: Create Reminder (JSON)
 # -------------------------------
+@csrf_exempt
 def create_reminder(request):
+
     if request.method != "POST":
         return JsonResponse({"error": "POST method required"}, status=400)
 
-    firebase_patient_id = request.POST.get("firebase_patient_id")
-    firebase_caretaker_id = request.POST.get("firebase_caretaker_id")
-    medicine_id = request.POST.get("medicine_id")
-    dosage = request.POST.get("dosage")
-    reminder_time = request.POST.get("reminder_time")
+    # Parse JSON body
+    try:
+        body = json.loads(request.body.decode("utf-8"))
+    except:
+        return JsonResponse({"error": "Invalid JSON format"}, status=400)
+
+    firebase_patient_id = body.get("firebase_patient_id")
+    firebase_caretaker_id = body.get("firebase_caretaker_id")
+    medicine_id = body.get("medicine_id")
+    dosage = body.get("dosage")
+    reminder_time = body.get("reminder_time")
 
     if not medicine_id:
         return JsonResponse({"error": "medicine_id required"}, status=400)
@@ -57,23 +67,28 @@ def create_reminder(request):
         reminder_time=reminder_time,
     )
 
-    return JsonResponse({"message": "Reminder created", "id": reminder.id})
+    return JsonResponse({"message": "Reminder created", "id": reminder.id}, status=201)
 
 
 # -------------------------------
-#  API: Mark Taken
+#  API: Mark as taken
 # -------------------------------
+@csrf_exempt
 def mark_taken(request, reminder_id):
+
     reminder = get_object_or_404(Reminder, id=reminder_id)
     reminder.is_taken = True
     reminder.save()
+
     return JsonResponse({"status": "success", "message": "Reminder marked as taken"})
 
 
 # -------------------------------
-#  API: Send Due Reminders to Firebase
+#  API: Send Due Reminders
 # -------------------------------
+@csrf_exempt
 def due_reminders(request):
+
     reminders = Reminder.objects.filter(reminder_time__lte=now(), is_sent=False)
     sent_count = 0
 
@@ -90,7 +105,4 @@ def due_reminders(request):
             r.save()
             sent_count += 1
 
-    return JsonResponse({
-        "status": "success",
-        "notifications_sent": sent_count
-    })
+    return JsonResponse({"status": "success", "notifications_sent": sent_count})
