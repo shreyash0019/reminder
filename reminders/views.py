@@ -106,3 +106,15 @@ def due_reminders(request):
             sent_count += 1
 
     return JsonResponse({"status": "success", "notifications_sent": sent_count})
+
+
+Reminder.objects.get_or_create(
+    firebase_patient_id=data["firebase_patient_id"],
+    medicine=medicine,
+    reminder_time=data["reminder_time"],
+    defaults={
+        "dosage": data["dosage"],
+        "caretaker": request.user
+    }
+)
+
