@@ -25,7 +25,7 @@ def reminder_list(request):
             "medicine_id": r.medicine.id,
             "medicine_name": r.medicine.name,
             "dosage": r.dosage,
-            "reminder_time": r.reminder_time,
+            "reminder_time": r.reminder_time.isoformat(),  # ✅ FIX
             "is_taken": r.is_taken,
             "is_sent": r.is_sent,
         })
@@ -69,7 +69,10 @@ def create_reminder(request):
     if not created:
         return JsonResponse({"message": "Reminder already exists"}, status=200)
 
-    return JsonResponse({"message": "Reminder created", "id": reminder.id}, status=201)
+    return JsonResponse(
+        {"message": "Reminder created", "id": reminder.id},
+        status=201
+    )
 
 
 # -------------------------------
@@ -79,7 +82,7 @@ def create_reminder(request):
 def mark_taken(request, reminder_id):
     reminder = get_object_or_404(Reminder, id=reminder_id)
     reminder.is_taken = True
-    reminder.save()
+    reminder.save(update_fields=["is_taken"])
     return JsonResponse({"status": "success"})
 
 
@@ -106,7 +109,7 @@ def due_reminders(request):
                 f"{r.medicine.name} at {r.reminder_time}"
             )
             r.is_sent = True
-            r.save()
+            r.save(update_fields=["is_sent"])  # ✅ SAFE UPDATE
             sent_count += 1
 
     return JsonResponse({
