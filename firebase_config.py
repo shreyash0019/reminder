@@ -1,12 +1,18 @@
-# firebase_config.py
-#import firebase_admin
-#from firebase_admin import credentials, firestore
-#import os
+import os
+import json
+import firebase_admin
+from firebase_admin import credentials, firestore
 
-#FIREBASE_KEY_PATH = r"C:\Users\Admin\Downloads\medicalremindersystem-firebase-adminsdk-fbsvc-1f9d596810.json"
+# Read service account JSON from environment variable
+firebase_json = os.environ.get("FIREBASE_SERVICE_ACCOUNT")
 
-#if not firebase_admin._apps:
-   # cred = credentials.Certificate(FIREBASE_KEY_PATH)
-   # firebase_admin.initialize_app(cred)
+if not firebase_json:
+    raise Exception("FIREBASE_SERVICE_ACCOUNT env variable not set")
 
-db = None #firestore.client()
+cred_dict = json.loads(firebase_json)
+cred = credentials.Certificate(cred_dict)
+
+if not firebase_admin._apps:
+    firebase_admin.initialize_app(cred)
+
+db = firestore.client()
