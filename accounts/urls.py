@@ -1,4 +1,6 @@
 from django.urls import path
+from .views import CaretakerDetailView, PatientListView
+
 from .views import (
     RegisterView,
     PatientLoginView,
