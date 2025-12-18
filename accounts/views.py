@@ -76,24 +76,3 @@ class CaretakerLoginView(generics.GenericAPIView):
                 status=status.HTTP_403_FORBIDDEN,
             )
         return generate_login_response(user)
-
-
-from rest_framework.views import APIView
-from rest_framework.permissions import IsAuthenticated
-
-class CaretakerDetailView(APIView):
-    permission_classes = [IsAuthenticated]
-
-    def get(self, request):
-        user = request.user
-
-        if user.role != "caretaker":
-            return Response({"error": "Not a caretaker"}, status=403)
-
-        return Response({
-            "id": user.id,
-            "username": user.username,
-            "role": user.role,
-            "fcm_token": user.fcm_token,
-        })
-
