@@ -33,3 +33,18 @@ class Sale(models.Model):
         self.medicine.quantity -= self.quantity_sold
         self.medicine.save()
         super().save(*args, **kwargs)
+
+
+from django.db import models
+from django.utils.timezone import now
+
+class Sale(models.Model):
+    medicine = models.ForeignKey("Medicine", on_delete=models.CASCADE)
+    quantity = models.IntegerField()
+    price = models.FloatField()
+    sale_date = models.DateTimeField(default=now)
+
+    def save(self, *args, **kwargs):
+        self.medicine.quantity -= self.quantity
+        self.medicine.save()
+        super().save(*args, **kwargs)
