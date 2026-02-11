@@ -61,9 +61,7 @@ def create_reminder(request):
         firebase_patient_id=firebase_patient_id,
         medicine=medicine,
         reminder_time=reminder_time,
-        defaults={
-            "dosage": dosage or ""
-        }
+        defaults={"dosage": dosage or ""}
     )
 
     if not created:
@@ -77,21 +75,65 @@ def create_reminder(request):
 # -------------------------------
 @csrf_exempt
 def mark_taken(request, reminder_id):
+
+    if request.method != "POST":
+        return JsonResponse({"error": "POST method required"}, status=400)
+
     reminder = get_object_or_404(Reminder, id=reminder_id)
+
     reminder.is_taken = True
     reminder.save()
-    return JsonResponse({"status": "success"})
+
+    return JsonResponse({"status": "success", "message": "Marked as taken"})
 
 
 # -------------------------------
-#  API: Send Due Reminders
+#  API: Get Due Reminders (FOR FRONTEND)
 # -------------------------------
 @csrf_exempt
-def due_reminders(request):
+def get_due_reminders(request):
 
     reminders = Reminder.objects.filter(
         reminder_time__lte=now(),
-        is_sent=False
+        is_taken=False
+    ).order_by("reminder_time")
+
+    data = []
+    for r in reminders:
+        data.append({
+            "id": r.id,
+            "medicine_name": r.medicine.name,
+            "dosage": r.dosage,
+            "reminder_time": r.reminder_time,
+        })
+
+    return JsonResponse({"due_reminders": data})
+
+
+# -------------------------------
+#  API: Due Reminder Count
+# -------------------------------
+@csrf_exempt
+def due_reminder_count(request):
+
+    count = Reminder.objects.filter(
+        reminder_time__lte=now(),
+        is_taken=False
+    ).count()
+
+    return JsonResponse({"due_count": count})
+
+
+# -------------------------------
+#  API: Send Due Reminders (Notification Trigger)
+# -------------------------------
+@csrf_exempt
+def send_due_notifications(request):
+
+    reminders = Reminder.objects.filter(
+        reminder_time__lte=now(),
+        is_sent=False,
+        is_taken=False
     )
 
     sent_count = 0
