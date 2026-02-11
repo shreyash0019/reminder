@@ -61,6 +61,27 @@ def generate_login_response(user, request):
 
 
 # -------------------------------
+# Seller Login
+# -------------------------------
+class SellerLoginView(generics.GenericAPIView):
+    serializer_class = LoginSerializer
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data
+
+        if user.role != "seller":
+            return Response(
+                {"error": "Invalid role for seller login"},
+                status=status.HTTP_403_FORBIDDEN,
+            )
+
+        return generate_login_response(user, request)
+
+
+# -------------------------------
 # Patient Login
 # -------------------------------
 class PatientLoginView(generics.GenericAPIView):
@@ -153,3 +174,4 @@ class CaretakerDetailView(APIView):
             },
             status=status.HTTP_200_OK,
         )
+
