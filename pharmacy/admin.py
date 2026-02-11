@@ -9,6 +9,6 @@ class MedicineAdmin(admin.ModelAdmin):
 
 @admin.register(Sale)
 class SaleAdmin(admin.ModelAdmin):
-    list_display = ("medicine", "quantity", "price", "sale_date")  # fixed
+    list_display = ("medicine", "quantity", "price", "sale_date")
     list_filter = ("sale_date", "medicine")
     search_fields = ("medicine__name",)
