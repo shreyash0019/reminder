@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import date
+from django.utils.timezone import now
 
 class Medicine(models.Model):
     name = models.CharField(max_length=100)
@@ -24,27 +25,18 @@ class Medicine(models.Model):
 
 class Sale(models.Model):
     medicine = models.ForeignKey(Medicine, on_delete=models.CASCADE)
-    quantity_sold = models.IntegerField()
-    sale_date = models.DateTimeField(auto_now_add=True)
-
-    def save(self, *args, **kwargs):
-        if self.quantity_sold > self.medicine.quantity:
-            raise ValueError("Not enough stock available")
-        self.medicine.quantity -= self.quantity_sold
-        self.medicine.save()
-        super().save(*args, **kwargs)
-
-
-from django.db import models
-from django.utils.timezone import now
-
-class Sale(models.Model):
-    medicine = models.ForeignKey("Medicine", on_delete=models.CASCADE)
     quantity = models.IntegerField()
     price = models.FloatField()
     sale_date = models.DateTimeField(default=now)
 
     def save(self, *args, **kwargs):
+        # Prevent selling more than stock
+        if self.quantity > self.medicine.quantity:
+            raise ValueError("Not enough stock available")
+        # Reduce stock
         self.medicine.quantity -= self.quantity
         self.medicine.save()
         super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"{self.quantity} x {self.medicine.name} on {self.sale_date.strftime('%Y-%m-%d %H:%M:%S')}"
