@@ -38,13 +38,7 @@ class RegisterView(generics.CreateAPIView):
 # -------------------------------
 # Common Login Response
 # -------------------------------
-def generate_login_response(user, request):
-    fcm_token = request.data.get("fcm_token")
-
-    if fcm_token:
-        user.fcm_token = fcm_token
-        user.save(update_fields=["fcm_token"])
-
+def generate_login_response(user):
     token, _ = Token.objects.get_or_create(user=user)
 
     return Response(
@@ -54,7 +48,6 @@ def generate_login_response(user, request):
             "user_id": user.id,
             "username": user.username,
             "role": user.role,
-            "fcm_token": user.fcm_token,
         },
         status=status.HTTP_200_OK,
     )
@@ -78,7 +71,7 @@ class SellerLoginView(generics.GenericAPIView):
                 status=status.HTTP_403_FORBIDDEN,
             )
 
-        return generate_login_response(user, request)
+        return generate_login_response(user)
 
 
 # -------------------------------
@@ -99,7 +92,7 @@ class PatientLoginView(generics.GenericAPIView):
                 status=status.HTTP_403_FORBIDDEN,
             )
 
-        return generate_login_response(user, request)
+        return generate_login_response(user)
 
 
 # -------------------------------
@@ -120,7 +113,7 @@ class CaretakerLoginView(generics.GenericAPIView):
                 status=status.HTTP_403_FORBIDDEN,
             )
 
-        return generate_login_response(user, request)
+        return generate_login_response(user)
 
 
 # -------------------------------
@@ -142,7 +135,6 @@ class PatientListView(APIView):
             {
                 "id": p.id,
                 "username": p.username,
-                "fcm_token": p.fcm_token,
             }
             for p in patients
         ]
@@ -170,8 +162,6 @@ class CaretakerDetailView(APIView):
                 "id": user.id,
                 "username": user.username,
                 "role": user.role,
-                "fcm_token": user.fcm_token,
             },
             status=status.HTTP_200_OK,
         )
-
